@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <Lottie options={defaultOptions} height={400} width={400} />
+        <Lottie options={defaultOptions} height={150} width={150} />
         <p>HostBees Welcomes You !</p>
         <h6>admin@hostbees.me</h6>
       </header>
