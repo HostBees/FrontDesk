@@ -9,6 +9,9 @@ function App() {
         <p>
          HostBees Welcomes You !
         </p>
+        <h6>
+         admin@hostbees.me
+        </h6>
        
       </header>
     </div>
