@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Lottie from "react-lottie";
 import animationData from './lotties/19877-the-beest-sticker-1.json';
+import WebCard from "./componets/WebCard";
 function App() {
   const defaultOptions = {
     loop: true,
@@ -16,9 +17,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <Lottie options={defaultOptions} height={150} width={150} />
-        <p>HostBees Welcomes You !</p>
-        <h6>admin@hostbees.me</h6>
+        <WebCard/>
       </header>
     </div>
   );
