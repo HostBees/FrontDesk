@@ -6,12 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
-export default function WebCard({webStatus}) {
+export default function WebCard({ webStatus }) {
   return (
-    <Card sx={{ display: "flex", margin: 5, width: 400, height: 200 }}>
+    <Card sx={{ display: "flex",width: 400, height: 200 }}>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-        {/* web icon */}
+          {/* web icon */}
           <CardMedia
             component="img"
             sx={{ width: 50, padding: 3, borderRadius: 25, height: 50 }}
@@ -41,7 +41,7 @@ export default function WebCard({webStatus}) {
         </Grid>
         <Grid item xs={3}>
           <Box sx={{ padding: 3 }}>
-          {/* Icon warning,error,running,monitering  webstatus*/}
+            {/* Icon warning,error,running,monitering  webstatus*/}
             <CardMedia
               component="img"
               sx={{ width: 50, borderRadius: 25, height: 50 }}

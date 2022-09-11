@@ -3,6 +3,7 @@ import "./App.css";
 import Lottie from "react-lottie";
 import animationData from './lotties/19877-the-beest-sticker-1.json';
 import WebCard from "./componets/WebCard";
+import NavBar from "./componets/NavBar";
 function App() {
   const defaultOptions = {
     loop: true,
@@ -17,7 +18,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <WebCard/>
+        <NavBar/>
       </header>
     </div>
   );
