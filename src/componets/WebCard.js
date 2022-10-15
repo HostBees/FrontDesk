@@ -5,17 +5,25 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function WebCard({ webStatus }) {
+  const navigate = useNavigate();
   return (
-    <Card sx={{ display: "flex",width: 400, height: 200 }}>
+    <Card
+      sx={{ display: "flex", width: 400, height: 200, marginY: 2 }}
+      elevation={10}
+      onClick={(e) => navigate("/CardView")}
+    >
       <Grid container spacing={2}>
         <Grid item xs={3}>
           {/* web icon */}
           <CardMedia
             component="img"
-            sx={{ width: 50, padding: 3, borderRadius: 25, height: 50 }}
-            image="https://images.unsplash.com/photo-1662820407543-681e4cfb1a69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
+            sx={{ width: "80%", padding: 3, borderRadius: 25, height: 70 }}
+            image="https://images.unsplash.com/photo-1664628631442-4f422ba3f94b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ1fENEd3V3WEpBYkV3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
             alt="Live from space album cover"
           />
         </Grid>
@@ -35,7 +43,9 @@ export default function WebCard({ webStatus }) {
               </Typography>
               <br />
 
-              <Typography>www.HostBees.me</Typography>
+              <Link color="text.secondary">
+                <Typography variant="subtitle1">www.HostBees.me</Typography>
+              </Link>
             </CardContent>
           </Box>
         </Grid>
@@ -45,17 +55,30 @@ export default function WebCard({ webStatus }) {
             <CardMedia
               component="img"
               sx={{ width: 50, borderRadius: 25, height: 50 }}
-              image="https://images.unsplash.com/photo-1606331068321-77ce461591c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHdhcm5pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+              image="https://png.pngtree.com/element_our/20200702/ourmid/pngtree-prohibition-warning-icon-image_2287798.jpg"
               alt="Live from space album cover"
             />
           </Box>
         </Grid>
 
-        <Grid item xs={12}>
-          <Box sx={{ paddingLeft: 3, paddingBottom: 1 }}>
-            updated via Github 3 days ago!
+       
+          <Box
+            sx={{
+              // backgroundColor: "red",
+              marginLeft: 5,
+              display:"flex",
+              flexDirection:"row",
+              width:"100%"
+            }}
+          >
+            <GitHubIcon
+              sx={{ marginRight:1 }}
+              fontSize="small"
+              fontColor="#a19f9a"
+            />
+            <Typography   color="text.secondary" variant="subtitle1">updated 3 days ago</Typography>
           </Box>
-        </Grid>
+   
       </Grid>
     </Card>
   );

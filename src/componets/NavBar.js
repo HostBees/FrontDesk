@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-
+import { Routes, Route, Link } from "react-router-dom";
 const pages = ["Activity", "PRICING", "DOMAINS", "Settings"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -36,33 +36,38 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "navy" }}>
+    <AppBar position="static" sx={{ bgcolor: "navy" }} elevation={10}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-            <Box component="img" sx={{ height: 54 }} alt="Logo" src="https://www.kindpng.com/picc/m/303-3031512_bee-logo-hd-png-download.png" />
+          <IconButton>
+            <Box
+              component="img"
+              sx={{ height: 54, borderRadius: 25, marginRight: 1 }}
+              alt="Logo"
+              src="https://www.kindpng.com/picc/m/303-3031512_bee-logo-hd-png-download.png"
+            />
             {/* <Avatar
                   src="https://www.kindpng.com/picc/m/303-3031512_bee-logo-hd-png-download.png"
                 /> */}
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              //   letterSpacing: '.3rem',
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            HostBees
-          </Typography>
+          <Link to="/" style={{textDecoration: 'none'}}>
+            <Typography
+              variant="h5"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 800,
+                //   letterSpacing: '.3rem',
+                // color: "inherit",
+                color: "white",
+              }}
+            >
+              HostBees
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -100,12 +105,14 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
+          
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            
+            // to='/'
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -113,11 +120,13 @@ const NavBar = () => {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "white",
               textDecoration: "none",
             }}
           >
+          <Link  to="/" style={{textDecoration: 'none',color:"white"}}>
             HostBees
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -136,7 +145,7 @@ const NavBar = () => {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
-                  src="https://images.unsplash.com/photo-1601288496920-b6154fe3626a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fG1vZGVsJTIwZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                  src="https://robohash.org/leader"
                 />
               </IconButton>
             </Tooltip>
