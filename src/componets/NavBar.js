@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Routes, Route, Link } from "react-router-dom";
 const pages = ["Activity", "PRICING", "DOMAINS", "Settings"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Account", "Dashboard", "Logout"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -51,7 +51,7 @@ const NavBar = () => {
                   src="https://www.kindpng.com/picc/m/303-3031512_bee-logo-hd-png-download.png"
                 /> */}
           </IconButton>
-          <Link to="/" style={{textDecoration: 'none'}}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <Typography
               variant="h5"
               noWrap
@@ -106,12 +106,11 @@ const NavBar = () => {
             </Menu>
           </Box>
           {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
-          
+
           <Typography
             variant="h5"
             noWrap
             component="a"
-            
             // to='/'
             sx={{
               mr: 2,
@@ -124,29 +123,28 @@ const NavBar = () => {
               textDecoration: "none",
             }}
           >
-          <Link  to="/" style={{textDecoration: 'none',color:"white"}}>
-            HostBees
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              HostBees
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+              <Link to={`/${page}`} style={{ textDecoration: "none", color: "white" }}>
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://robohash.org/leader"
-                />
+                <Avatar alt="Remy Sharp" src="https://robohash.org/leader" />
               </IconButton>
             </Tooltip>
             <Menu

@@ -28,6 +28,11 @@ function Footer(props) {
       sx={{
         bgcolor: "background.paper",
         py: 6,
+
+        position: "relative",
+        // height: "100px",
+      
+
         // marginTop:30
         // position:""
       }}
