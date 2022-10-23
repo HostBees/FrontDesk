@@ -12,6 +12,7 @@ import Activity from "./pages/Activity";
 import Pricing from "./pages/Pricing";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Setting from "./pages/Setting";
 
 function App() {
   const defaultOptions = {
@@ -33,7 +34,9 @@ function App() {
         // minHeight: "100vh",
       }}
     >
-      <header className="App-header">{/* <NavBar /> */}</header>
+      <header className="App-header">
+        <NavBar />
+      </header>
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -42,11 +45,11 @@ function App() {
         <Route path="/activity" element={<Activity />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/setting" element={<Setting />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/domians" />
-        <Route path="setting" />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

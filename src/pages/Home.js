@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -10,11 +10,18 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import WebCard from "../componets/WebCard";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Typography from "@mui/material/Typography";
 
 // import AddIcon from "@mui/icons-material/Add";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Home() {
+  let  [listView,setListView] =  useState(false)
   const naviagte = useNavigate();
   return (
     <>
@@ -48,11 +55,11 @@ function Home() {
                     variant="contained"
                     aria-label="Disabled elevation buttons"
                   >
-                    <Button sx={{ bgcolor: "navy" }}>
+                    <Button sx={{ bgcolor: "navy" }} onClick={e => setListView(false)}>
                       {" "}
                       <GridViewOutlinedIcon />
                     </Button>
-                    <Button sx={{ bgcolor: "navy", marginRight: 2 }}>
+                    <Button sx={{ bgcolor: "navy", marginRight: 2 }} onClick={e => setListView(true)}>
                       {" "}
                       <FormatListBulletedOutlinedIcon />{" "}
                     </Button>
@@ -74,6 +81,128 @@ function Home() {
         </Container>
         <Grid container sx={{ marginY: 3 }}>
           <Grid item xs={12} md={12}>
+          {listView ?         
+            <Box 
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-evenly",
+                height: "70vh",
+                flexWrap: "wrap",
+              }}
+            >
+              <List
+              
+                sx={{
+                  width: "100%",
+                  maxWidth: 360,
+                  bgcolor: "background.paper",
+                }}
+              >
+                <ListItem alignItems="flex-start"  onClick={e => naviagte('/CardView')}>
+                  <ListItemAvatar>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://images.unsplash.com/photo-1664628631442-4f422ba3f94b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ1fENEd3V3WEpBYkV3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Host Bees"
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          www.HostBees.me
+                        </Typography>
+                      
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://images.unsplash.com/photo-1664628631442-4f422ba3f94b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ1fENEd3V3WEpBYkV3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Host Bees"
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          www.HostBees.me
+                        </Typography>
+                      
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://images.unsplash.com/photo-1664628631442-4f422ba3f94b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ1fENEd3V3WEpBYkV3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Host Bees"
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          www.HostBees.me
+                        </Typography>
+                      
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://images.unsplash.com/photo-1664628631442-4f422ba3f94b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ1fENEd3V3WEpBYkV3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Host Bees"
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          www.HostBees.me
+                        </Typography>
+                      
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+                {/* <Divider variant="inset" component="li" /> */}
+             
+              </List>
+            </Box>: 
             <Box
               sx={{
                 display: "flex",
@@ -91,6 +220,7 @@ function Home() {
               <WebCard />
               <WebCard />
             </Box>
+          }
           </Grid>
         </Grid>
       </Box>
@@ -99,3 +229,5 @@ function Home() {
 }
 
 export default Home;
+
+//list view
