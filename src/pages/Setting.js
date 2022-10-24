@@ -19,15 +19,95 @@ import Typography from "@mui/material/Typography";
 
 export default function Setting() {
   return (
-    <Grid container sx={{ display: "flex", justifyContent: "center" }}>
+    <Grid
+      container
+      sx={{ display: "flex", justifyContent: "center", margin: 3 }}
+    >
       <Grid item md={6}>
         <Paper>
           <Box sx={{ padding: 5 }}>
             <Typography variant="h3">Setting</Typography>
           </Box>
+          <hr />
           <Box>
-            
+            <Grid
+              container
+              sx={{
+                disply: "flex",
+                flexDirection: "row-reverse",
+                // backgroundColor: "red",
+              }}
+            >
+              <Grid item md={6}>
+                <Box sx={{ padding: 5 }}>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="https://robohash.org/leader"
+                    sx={{ width: 200, height: 200 }}
+                  />
+                </Box>
+              </Grid>
+              <Grid item md={6}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: 5,
+                    justifyContent: "space-evenly",
+                    height: 300,
+                  }}
+                >
+                  <TextField
+                    // value={formik.values.zip}
+                    // onChange={formik.handleChange}
+                    // error={formik.touched.zip && Boolean(formik.errors.zip)}
+                    // onBlur={formik.handleBlur}
+                    // helperText={formik.touched.zip && formik.errors.zip}
+                    // value="Darshan Mistry"
+                    label="Usernme"
+                    id="standard-size-normal"
+                    // defaultValue="Normal"
+                    variant="standard"
+                  />
+                  <TextField
+                    // value={formik.values.zip}
+                    // onChange={formik.handleChange}
+                    // error={formik.touched.zip && Boolean(formik.errors.zip)}
+                    // onBlur={formik.handleBlur}
+                    // helperText={formik.touched.zip && formik.errors.zip}
+                    // value="Darshan Mistry"
+                    label="email"
+                    id="standard-size-normal"
+                    // defaultValue="Normal"
+                    variant="standard"
+                  />
+                  <TextField
+                    // value={formik.values.zip}
+                    // onChange={formik.handleChange}
+                    // error={formik.touched.zip && Boolean(formik.errors.zip)}
+                    // onBlur={formik.handleBlur}
+                    // helperText={formik.touched.zip && formik.errors.zip}
+                    // value="Darshan Mistry"
+                    label="Phone"
+                    id="standard-size-normal"
+                    // defaultValue="Normal"
+                    variant="standard"
+                  />
+
+                  <Box sx={{ display: "flex", flexDirection: "row" }}>
+                    <Button variant="contained" sx={{ marginRight: 3 }}>
+                      Save
+                    </Button>
+                    <Button variant="contained">Reset</Button>
+                  </Box>
+
+                </Box>
+              </Grid>
+              
+              
+            </Grid>
           </Box>
+       
         </Paper>
       </Grid>
     </Grid>
