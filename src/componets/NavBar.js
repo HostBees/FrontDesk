@@ -1,5 +1,7 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
+// import axios from "axios";
+import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -8,17 +10,21 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../reducers/authReducers";
+
 const pages = ["Activity", "Pricing", "Domains", "Setting"];
-const settings = ["Account", "Dashboard", "Logout"];
+const settings = ["Account", "Dashboard"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -129,7 +135,10 @@ const NavBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={`/${page}`} style={{ textDecoration: "none", color: "white" }}>
+              <Link
+                to={`/${page}`}
+                style={{ textDecoration: "none", color: "white" }}
+              >
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -165,9 +174,22 @@ const NavBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Link
+                    to={`/${setting}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <Typography textAlign="center">{setting}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
+              <Button
+                sx={{ marginX: 2 }}
+                color="error"
+                variant="contained"
+                onClick={(e) => dispatch(logout())}
+              >
+                Logout
+              </Button>
             </Menu>
           </Box>
         </Toolbar>
