@@ -14,8 +14,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { signinUser } from "../reducers/authReducers";
+import { useDispatch } from "react-redux";
+import { signinUser, signupUser } from "../reducers/authReducers";
 
 //By Darshan
 function Copyright(props) {
@@ -38,53 +38,31 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({ name }) {
-  let { unkid } = useParams();
-  console.log(unkid);
-
+export default function Auth({ name }) {
   const [loginId, setLoginId] = useState("");
-  const [pin, setpin] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [auth, setAuth] = useState("signin");
 
   //redux
 
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     let newData = {
-      unkid,
       loginId,
-      pin,
+      password,
+      email,
     };
 
-    // dispatch(signinUser(newData));
+    if (auth == "signin") {
+      dispatch(signinUser(newData));
+    } else {
+      dispatch(signupUser(newData));
+    }
 
-    setTimeout(() => {
-      navigate("/");
-    }, 0);
+    navigate("/");
   };
-
-  // const sendData = await axios.post(`/guestportal/login/`, {
-  //   loginId: data.get("loginId"),
-  //   pin: data.get("pin"),
-  // });
-
-  // console.log(sendData.data);
-  // console.log(sendData.data.token);
-  // localStorage.setItem("token", sendData.data.token);
-
-  //     const x =  await fetch('guestportal/login',{
-  //       method:"post",
-  //       headers :{
-  //         "Accept":"application/json, text/plain, */*",
-  //         "Content-Type":"application/json",
-  //       },
-  //       body:JSON.stringify(newData)
-
-  //     })
-
-  // const y = await x.json()
-
-  //     console.log(x,y)
 
   return (
     <ThemeProvider theme={theme}>
@@ -102,14 +80,30 @@ export default function SignIn({ name }) {
             HostBees
           </Typography>
           <Typography variant="body1" sx={{ color: "GrayText" }}>
-            Web Hosting site
+            Web Hosting plateform
           </Typography>
           <Box noValidate sx={{ mt: 1 }}>
+            {auth == "signin" ? (
+              <></>
+            ) : (
+              <TextField
+                margin="normal"
+                fullWidth
+                id="loginId"
+                label="Email"
+                name="loginId"
+                autoComplete="loginId"
+                type="text"
+                // value={email}
+                // onChange={(e) => setLoginId(e.target.value)}
+                autoFocus
+              />
+            )}
             <TextField
               margin="normal"
               fullWidth
               id="loginId"
-              label="Email/Username"
+              label={auth=="signin"?"Username/Email":"Username"}
               name="loginId"
               autoComplete="loginId"
               type="text"
@@ -120,14 +114,29 @@ export default function SignIn({ name }) {
             <TextField
               margin="normal"
               fullWidth
-              name="pin"
-              label="password"
+              name="password"
+              label="Password"
               type="password"
-              id="pin"
-              value={pin}
-              onChange={(e) => setpin(e.target.value)}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
             />
+            {auth == "signin" ? (
+              <></>
+            ) : (
+              <TextField
+                margin="normal"
+                fullWidth
+                name="pin"
+                label="Confirm password"
+                type="password"
+                id="pin"
+                // value={pin}
+                // onChange={(e) => setpin(e.target.value)}
+                autoComplete="current-password"
+              />
+            )}
 
             <Button
               type="submit"
@@ -136,19 +145,24 @@ export default function SignIn({ name }) {
               sx={{ mt: 3, mb: 2 }}
               onClick={handleSubmit}
             >
-              Signin
+              {auth == "signin" ? <>SignIn</> : <>SignUp</>}
             </Button>
+
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
-                </Link>  
-                <Typography>
-                                     
-                </Typography>
-                <Link href="#" variant="body2">
-                        Don't have an account? Sign up
                 </Link>
+                <Typography></Typography>
+                {auth == "signin" ? (
+                  <Link onClick={(e) => setAuth("signup")} variant="body2">
+                    Don't have an account? Sign Up
+                  </Link>
+                ) : (
+                  <Link onClick={(e) => setAuth("signin")} variant="body2">
+                    Already have an account? Sign In
+                  </Link>
+                )}
               </Grid>
             </Grid>
           </Box>

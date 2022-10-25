@@ -100,14 +100,10 @@ export default function Setting() {
                     </Button>
                     <Button variant="contained">Reset</Button>
                   </Box>
-
                 </Box>
               </Grid>
-              
-              
             </Grid>
           </Box>
-       
         </Paper>
       </Grid>
     </Grid>
