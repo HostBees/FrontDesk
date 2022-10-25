@@ -1,7 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Lottie from "react-lottie";
-import animationData from './lotties/19877-the-beest-sticker-1.json';
+import animationData from "./lotties/19877-the-beest-sticker-1.json";
+import NavBar from "./componets/NavBar";
+import Home from "./pages/Home";
+import { Routes, Route, Link } from "react-router-dom";
+import CardView from "./pages/CardView";
+import WebForm from "./pages/WebForm";
+import Footer from "./componets/Footer";
+import Activity from "./pages/Activity";
+import Pricing from "./pages/Pricing";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import Setting from "./pages/Setting";
+
 function App() {
   const defaultOptions = {
     loop: true,
@@ -13,13 +25,31 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      sx={{
+        backgroundColor: "#e6e8eb",
+        display: "flex",
+        flexDirection: "column",
+        // minHeight: "100vh",
+      }}
+    >
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <Lottie options={defaultOptions} height={150} width={150} />
-        <p>HostBees Welcomes You !</p>
-        <h6>admin@hostbees.me</h6>
+        <NavBar />
       </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/cardview" element={<CardView />} />
+        <Route path="/webform" element={<WebForm />} />
+        <Route path="/activity" element={<Activity />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/setting" element={<Setting />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/domians" />
+      </Routes>
+      <Footer />
     </div>
   );
 }
