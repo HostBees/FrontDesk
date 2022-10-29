@@ -43,15 +43,35 @@ function App() {
         // minHeight: "100vh",
       }}
     >
-      <header className="App-header">{token ? <NavBar /> : <></>}</header>
+      <header className="App-header">
+        {token && token != undefined ? <NavBar /> : <></>}
+      </header>
       <Routes>
-        <Route path="/" element={token ? <Home /> : <Auth />} />
+        <Route
+          path="/"
+          element={token && token != undefined ? <Home /> : <Auth />}
+        />
 
-        <Route path="/cardview" element={token ? <CardView /> : <Auth />} />
-        <Route path="/webform" element={token ? <WebForm /> : <Auth />} />
-        <Route path="/activity" element={token ? <Activity /> : <Auth />} />
-        <Route path="/pricing" element={token ? <Pricing /> : <Auth />} />
-        <Route path="/setting" element={token ? <Setting /> : <Auth />} />
+        <Route
+          path="/cardview"
+          element={token && token != undefined ? <CardView /> : <Auth />}
+        />
+        <Route
+          path="/webform"
+          element={token && token != undefined ? <WebForm /> : <Auth />}
+        />
+        <Route
+          path="/activity"
+          element={token && token != undefined ? <Activity /> : <Auth />}
+        />
+        <Route
+          path="/pricing"
+          element={token && token != undefined ? <Pricing /> : <Auth />}
+        />
+        <Route
+          path="/setting"
+          element={token && token != undefined ? <Setting /> : <Auth />}
+        />
         <Route path="/domians" />
       </Routes>
       {token ? <Footer /> : <></>}

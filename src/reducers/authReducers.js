@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchFunction } from "../helpers/fetchFunction";
+
 const initialState = {
   token: "",
   loading: false,
@@ -7,13 +8,16 @@ const initialState = {
 };
 
 export const signupUser = createAsyncThunk("signupUser", async (body) => {
-  const result = await fetchFunction("/signup", body);
-
+  console.log(body);
+  const result = await fetchFunction("/HostBees/signup", body, "post", "");
+  console.log(result);
   return result;
 });
 
 export const signinUser = createAsyncThunk("signinUser", async (body) => {
-  const result = await fetchFunction("/signin", body);
+  console.log(body);
+  const result = await fetchFunction("HostBees/signin", body, "post", "");
+
   return result;
 });
 
@@ -36,12 +40,17 @@ const authReducer = createSlice({
       state.loading = false;
       if (action.payload.error) {
         state.error = action.payload.error;
+        console.log(state.error);
       } else {
         state.error = action.payload.message;
+        console.log(state.error);
       }
     },
     [signupUser.pending]: (state, action) => {
       state.loading = true;
+    },
+    [signupUser.rejected]: (state, action) => {
+      state.error = "Rejected";
     },
 
     [signinUser.fulfilled]: (state, action) => {
@@ -49,9 +58,13 @@ const authReducer = createSlice({
       if (action.payload.error) {
         state.error = action.payload.error;
       } else {
-        state.error = action.payload.message;
+        if (action.payload.message) state.error = action.payload.message;
         state.token = action.payload.token;
-        localStorage.setItem("token", action.payload.token);
+        if (state.token === undefined) {
+          state.error = action.payload.message;
+        } else {
+          localStorage.setItem("token", action.payload.token);
+        }
       }
     },
 
