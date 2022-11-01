@@ -80,11 +80,13 @@ export default function Auth({ name }) {
     onSubmit: (values) => {
       console.log(values);
 
-      dispatch(signupUser({
-        email:values.email,
-        password:values.password,
-        username:values.loginId
-      }));
+      dispatch(
+        signupUser({
+          email: values.email,
+          password: values.password,
+          username: values.loginId,
+        })
+      );
     },
   });
   const formik2 = useFormik({
@@ -106,10 +108,12 @@ export default function Auth({ name }) {
     onSubmit: (values) => {
       console.log(values);
 
-      dispatch(signinUser({
-        username:values.loginId,
-        password:values.password
-      }));
+      dispatch(
+        signinUser({
+          username: values.loginId,
+          password: values.password,
+        })
+      );
     },
   });
 
@@ -195,7 +199,9 @@ export default function Auth({ name }) {
                   ? formik2.touched.loginId && Boolean(formik2.errors.loginId)
                   : formik1.touched.loginId && Boolean(formik1.errors.loginId)
               }
-              onBlur={auth == "signin"?formik2.handleBlur:formik1.handleBlur}
+              onBlur={
+                auth == "signin" ? formik2.handleBlur : formik1.handleBlur
+              }
               helperText={
                 auth == "signin"
                   ? formik2.touched.loginId && formik2.errors.loginId
@@ -267,7 +273,6 @@ export default function Auth({ name }) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            
             >
               {auth == "signin" ? <>SignIn</> : <>SignUp</>}
             </Button>

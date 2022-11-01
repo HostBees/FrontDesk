@@ -1,10 +1,27 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import { DropzoneArea } from "material-ui-dropzone";
-import { TextField, Paper, Box, Typography } from "@mui/material";
+import { TextField, Paper, Box, Typography, Button } from "@mui/material";
 import RepoList from "../componets/RepoList";
+import { FormikConsumer, useFormik } from "formik";
+import * as Yup from "yup";
+
 function WebForm() {
   const [file, setFile] = useState([]);
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      hostby: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required("Please enter webapp name"),
+      hostby: Yup.string().required("Please enter your name"),
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   console.log(file);
   return (
@@ -32,17 +49,44 @@ function WebForm() {
             <RepoList repoUserName="Darshanlk" />
           </Box>
           <Box
+            component="form"
+            onSubmit={formik.handleSubmit}
             sx={{
               padding: 3,
               display: "flex",
               flexDirection: "column",
               alignItems: "",
               justifyContent: "space-evenly",
-              height: "40%",
+              height: "45%",
             }}
           >
-            <TextField label="Website Name" />
-            <TextField label="Web Desecription" />
+            <TextField
+              label="Website Name"
+              name="name"
+              type="text"
+              id="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              error={formik.touched.name && Boolean(formik.errors.name)}
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.name && formik.errors.name}
+            />
+            <TextField
+              label="HostBy"
+              name="hostby"
+              type="text"
+              id="hostby"
+              value={formik.values.hostby}
+              onChange={formik.handleChang}
+              error={formik.touched.hostby && Boolean(formik.errors.hostby)}
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.hostby && formik.errors.hostby}
+            />
+            <Box>
+              <Button sx={{ mt:1 }} type="submit" variant="contained">
+                Submit
+              </Button>
+            </Box>
           </Box>
         </Paper>
       </Grid>
