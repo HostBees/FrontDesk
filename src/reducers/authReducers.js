@@ -5,6 +5,8 @@ const initialState = {
   token: "",
   loading: false,
   error: "",
+
+
 };
 
 export const signupUser = createAsyncThunk("signupUser", async (body) => {
@@ -16,10 +18,13 @@ export const signupUser = createAsyncThunk("signupUser", async (body) => {
 
 export const signinUser = createAsyncThunk("signinUser", async (body) => {
   console.log(body);
-  const result = await fetchFunction("HostBees/signin", body, "post", "");
+  const result = await fetchFunction("/HostBees/signin", body, "post", "");
 
-  return result;
+  return result
 });
+
+
+
 
 const authReducer = createSlice({
   name: "user",

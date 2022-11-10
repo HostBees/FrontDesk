@@ -47,6 +47,9 @@ function App() {
         {token && token != undefined ? <NavBar /> : <></>}
       </header>
       <Routes>
+    
+
+
         <Route
           path="/"
           element={token && token != undefined ? <Home /> : <Auth />}

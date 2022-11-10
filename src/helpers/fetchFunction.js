@@ -6,11 +6,11 @@ export const fetchFunction = async (url, body, reqType, authToken) => {
       "Content-Type": "application/json",
       Authorization: authToken,
     },
-    body:JSON.stringify(body)
+    ...( body != (undefined || null)   && { body: JSON.stringify(body) }),
   });
 
   const res = await result.json();
-  console.log(res)
+  console.log(res);
 
   return res;
 };
